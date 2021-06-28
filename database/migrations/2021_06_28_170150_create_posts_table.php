@@ -11,10 +11,12 @@ class CreatePostsTable extends Migration
      *
      * @return void
      */
-    public function up()
+    public function up() //kreiranje posts table sa id i timestamps. Menjamo funkciju, dodajemo title i body
     {
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
+            $table->string('title');
+            $table->mediumText('body');
             $table->timestamps();
         });
     }
