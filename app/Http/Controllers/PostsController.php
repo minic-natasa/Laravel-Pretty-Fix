@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Post; //omogućavamo korišćenje Post modela.
+use DB; //preko DB klase izvlačimo podatke iz baze
 
 class PostsController extends Controller
 {
@@ -14,7 +15,9 @@ class PostsController extends Controller
      */
     public function index()
     {
-        $posts = Post::all(); //uzimanje svega iz modela - baze
+        //$posts = Post::orderBy('title', 'desc')->get(); //razvrstavanje postova prema naslovu 
+        //$posts = Post::all(); //uzimanje svega iz modela - baze
+        $posts = DB::select('SELECT * FROM posts');
         return view('posts.index') ->  with('posts', $posts); //u index.blade.php izlistamo sve postove
     }
 
