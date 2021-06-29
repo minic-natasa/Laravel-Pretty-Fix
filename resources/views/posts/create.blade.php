@@ -16,7 +16,7 @@
     {{Form::text('title', '', ['class' => 'form-control', 'placeholder' => 'Title'])}}
     <br>
     {{Form::label('body', 'Body')}}
-    {{Form::textarea('title', '', ['class' => 'form-control', 'placeholder' => 'Body'])}}
+    {{Form::textarea('body', '', ['class' => 'form-control', 'placeholder' => 'Body'])}}
 
    </div>
 

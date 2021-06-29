@@ -93,6 +93,7 @@
         </nav>
 
         <main class="py-4 container">
+            @include('inc.messages') <!-- Dodavanje poruka ukoliko postoji error i poruka za sesije - uspešna/neuspešna -->
             @yield('content')
         </main>
     </div>

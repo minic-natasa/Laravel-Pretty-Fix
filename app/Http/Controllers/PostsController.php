@@ -39,7 +39,17 @@ class PostsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'title' => 'required', 
+            'body' => 'required'
+        ]);
+
+        $post = new Post;
+        $post -> title = $request -> input('title'); //dodavanje novog posta - naslov
+        $post -> body = $request -> input('body'); //dodavanje novog posta - tekst
+        $post -> save(); //dodavanje novog posta - čuvanje
+
+        return redirect('/posts') -> with('success', 'New Post created!'); //Nakon čuvanja nove objave, redirect na sve objave
     }
 
     /**
