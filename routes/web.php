@@ -28,14 +28,13 @@ Route::get('/about',[App\Http\Controllers\PagesController::class,'about']);
 Route::get('/services',[App\Http\Controllers\PagesController::class,'services']);
 
 
+/*
 Route::get('/users/{id}', function ($id) { //prosledjujemo id od korisnika, dinamicka ruta
     return 'This is a user ' . $id;
 
 });
 
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+*/
 
 Auth::routes();
 
@@ -44,3 +43,10 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+use App\Http\Controllers\PostsController;
+Route::resource('posts', PostsController::class);
