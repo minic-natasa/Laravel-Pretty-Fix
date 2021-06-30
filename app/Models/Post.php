@@ -10,4 +10,9 @@ class Post extends Model
     use HasFactory;
     //Ovde možemo da vršimo izmene u posts tabeli. Možemo promeniti npr. table name, primary key, timestamps...
     //public $timestamps = false;
+
+    public function user(){
+
+        return $this->belongsTo('App\Models\User');
+    }
 }
