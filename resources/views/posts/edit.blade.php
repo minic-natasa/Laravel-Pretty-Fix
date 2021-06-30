@@ -10,7 +10,7 @@
 
 
 
-   {!! Form::open(['action' => ['App\Http\Controllers\PostsController@store', $post->id], 'method' => 'POST']) !!}
+   {!! Form::open(['action' => ['App\Http\Controllers\PostsController@update', $post->id], 'method' => 'POST']) !!}
    <div class = "form-group">
     {{Form::label('title', 'Title')}}
     {{Form::text('title', $post->title, ['class' => 'form-control', 'placeholder' => 'Title'])}}
