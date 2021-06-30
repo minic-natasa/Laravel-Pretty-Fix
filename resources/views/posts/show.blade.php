@@ -9,6 +9,13 @@
     <hr>
     <a href="/posts/{{$post->id}}/edit" class="btn btn-primary">Edit</a>
     <br>
+    {!! Form::open(['action' => ['App\Http\Controllers\PostsController@destroy', $post->id], 'method' => 'POST', 'class' => 'pull-right']) !!}
+
+    {{Form::hidden('_method', 'DELETE')}}
+    <br>
+    {{Form::submit('Delete', ['class' => 'btn btn-danger'])}}
+
+    {!! Form::close() !!}
     <br>
     <a href="/posts" class="btn btn-default">Go back</a>
 
