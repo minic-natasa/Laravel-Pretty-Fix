@@ -85,7 +85,17 @@ class PostsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        
+        $this->validate($request, [
+            'title' => 'required', 
+            'body' => 'required'
+        ]);
+
+        $post = Post::find($id); //nađi post preko id
+        $post -> title = $request -> input('title'); //dodavanje novog posta - naslov
+        $post -> body = $request -> input('body'); //dodavanje novog posta - tekst
+        $post -> save(); //dodavanje novog posta - čuvanje
+
+        return redirect('/posts') -> with('success', 'Post updated!'); //Nakon čuvanja nove objave, redirect na sve objave
     }
 
     /**
