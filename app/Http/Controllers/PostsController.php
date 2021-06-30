@@ -47,6 +47,7 @@ class PostsController extends Controller
         $post = new Post;
         $post -> title = $request -> input('title'); //dodavanje novog posta - naslov
         $post -> body = $request -> input('body'); //dodavanje novog posta - tekst
+        $post -> user_id = auth()->user()->id; //naknadno dodato - povezivanje usera (id usera) sa objavom - kako bi se znalo koji user je objavio koju objavu
         $post -> save(); //dodavanje novog posta - čuvanje
 
         return redirect('/posts') -> with('success', 'New Post created!'); //Nakon čuvanja nove objave, redirect na sve objave
