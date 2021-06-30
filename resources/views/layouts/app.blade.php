@@ -33,24 +33,19 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
-                    <li class="nav-item">
-                                    <a class="nav-link" href="/posts/create">Create New Post</a>
-                                </li>
-                    </ul>
+                        <li class="nav-item">
+                                        <a class="nav-link" href="/posts/create">Create New Post</a>
+                                    </li>
+                        </ul>
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
-                        @guest
-
+                        
                         <li class="nav-item">
                                     <a class="nav-link" href="/">Home</a>
                                 </li>
-                        <!--
-                        <li class="nav-item">
-                                <a class="nav-link" href="/services">Services</a>
-                                </li>
-                        -->
+                        
                         <li class="nav-item">
                                 <a class="nav-link" href="/about">About</a>
                                 </li>
@@ -58,6 +53,8 @@
                          <li class="nav-item">
                                 <a class="nav-link" href="/posts">Posts</a>
                                 </li>
+
+                        @guest
 
                             @if (Route::has('login'))
                                 <li class="nav-item">
