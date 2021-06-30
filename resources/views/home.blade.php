@@ -27,8 +27,8 @@
 
                         @foreach ($posts as $post)
                             
-                        <tr>
-                            <th>{{$post->title}}</th>
+                        <tr> 
+                            <th><a href="/posts/{{$post->id}}" class="btn btn-default">{{$post -> title}}</a></th>
                             <th><a href="/posts/{{$post->id}}/edit" class="btn btn-default">Edit post</a></th>
                             <th></th>
                         </tr>
@@ -47,3 +47,6 @@
     </div>
 </div>
 @endsection
+
+
+<!-- {//{$post->title}} -->
