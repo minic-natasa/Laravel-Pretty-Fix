@@ -17,7 +17,7 @@ class PostsController extends Controller
          */
         public function __construct()
         {
-            $this->middleware('auth');
+            $this->middleware('auth', ['except' => ['index', 'show']]); //login svuda za upravljanje objavama osim za stranicu sa svim objavama
         }
     /**
      * Display a listing of the resource.
