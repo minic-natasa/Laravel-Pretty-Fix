@@ -52,13 +52,28 @@ class PostsController extends Controller
     {
         $this->validate($request, [
             'title' => 'required', 
-            'body' => 'required'
+            'body' => 'required',
+            'cover_image' => 'image|nullable|max:1999' //slika nije obavezna
         ]);
+
+        //file upload
+        if($request->hasFile('cover_image')){ //ako je korisnik izabrao sliku za postavljanje
+            $filenameWithExt = $request->file('cover_image')->getClientOriginalName(); //uzimamo filename sa extension
+            $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME); //uzimamo filename slike za upload
+            $extension = $request->file('cover_image')->getClientOriginalExtension(); //uzimamo ext
+            $filenameToStore = $filename .'_'.time().'.'.$extension; //ovaj način postavljanja ukoliko bi user postavio sliku sa istim imenom
+            $path = $request->file('cover_image')->storeAs('public/cover_images', $filenameToStore); //upload slike
+        }else{
+            $filenameToStore = 'noimage.jpeg'; //ako nema slike za postavljanje, ovo je default
+        }
 
         $post = new Post;
         $post -> title = $request -> input('title'); //dodavanje novog posta - naslov
         $post -> body = $request -> input('body'); //dodavanje novog posta - tekst
         $post -> user_id = auth()->user()->id; //naknadno dodato - povezivanje usera (id usera) sa objavom - kako bi se znalo koji user je objavio koju objavu
+        
+        $post->cover_image = $filenameToStore;
+
         $post -> save(); //dodavanje novog posta - čuvanje
 
         return redirect('/posts') -> with('success', 'New Post created!'); //Nakon čuvanja nove objave, redirect na sve objave
@@ -103,12 +118,27 @@ class PostsController extends Controller
     {
         $this->validate($request, [
             'title' => 'required', 
-            'body' => 'required'
+            'body' => 'required',
+            'cover_image' => 'image|nullable|max:1999' //slika nije obavezna
         ]);
+
+        //file update
+        if($request->hasFile('cover_image')){ //ako je korisnik izabrao sliku za postavljanje
+            $filenameWithExt = $request->file('cover_image')->getClientOriginalName(); //uzimamo filename sa extension
+            $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME); //uzimamo filename slike za upload
+            $extension = $request->file('cover_image')->getClientOriginalExtension(); //uzimamo ext
+            $filenameToStore = $filename .'_'.time().'.'.$extension; //ovaj način postavljanja ukoliko bi user postavio sliku sa istim imenom
+            $path = $request->file('cover_image')->storeAs('public/cover_images', $filenameToStore); //upload slike
+        }
 
         $post = Post::find($id); //nađi post preko id
         $post -> title = $request -> input('title'); //dodavanje novog posta - naslov
         $post -> body = $request -> input('body'); //dodavanje novog posta - tekst
+
+        if($request->hasFile('cover_image')){
+            $post->cover_image = $filenameToStore;
+        }
+        
         $post -> save(); //dodavanje novog posta - čuvanje
 
         return redirect('/posts') -> with('success', 'Post updated!'); //Nakon čuvanja nove objave, redirect na sve objave

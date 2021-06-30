@@ -3,7 +3,16 @@
 @section('content')
     
 <h1>{{$post->title}}</h1>
+
+
+
 <p>{{$post->body}}</p>
+
+<div class="row">
+  <div class="col-md-12">
+    <img style="width:50%" src="/storage/cover_images/{{$post->cover_image}}" alt="">
+  </div>
+</div>
 <hr>
     <small>Written on {{$post->created_at}}</small>
     <hr>
