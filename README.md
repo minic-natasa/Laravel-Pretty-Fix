@@ -1,62 +1,45 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+Pretty Fix je Laravel aplikacija koja koristi Blade šablone za izradu dinamičkih web stranica. Ova aplikacija omogućava CRUD (Create, Read, Update, Delete) operacije za upravljanje objavama. Svaka objava sadrži naslov, tekstualni sadržaj i cover fotografiju.
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Za pokretanje aplikacije potrebno je instalirati Laravel i konfigurisati okruženje u skladu sa Laravel dokumentacijom. Nakon instalacije, potrebno je kreirati bazu podataka i povezati je sa aplikacijom putem konfiguracionog fajla .env.
 
-## About Laravel
+Korišćene su migracije za definisanje struktura tabela u bazi podataka. Seederi su korišćeni za populaciju baze podataka početnim podacima, što omogućava lakši početak rada sa aplikacijom.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+**Model User:** Predstavlja korisnike sistema. Sadrži osnovne informacije kao što su ime, email i šifra.
+**Model Post:** Sadrži informacije o objavama koje korisnici kreiraju. Svaka objava je povezana sa korisnikom koji ju je kreirao.
+Odnos između modela User i Post je 'jedan prema mnogo', gde jedan korisnik može kreirati više objava.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+**HomeController:** Upravlja prikazom početne stranice.
+**PagesController:** Upravlja statičkim stranicama kao što su About i Services.
+**PostsController: **Upravlja CRUD operacijama za objave.
+**AuthController:** Upravlja registracijom i prijavom korisnika.
+Web rute su definisane za svaku od navedenih funkcionalnosti, omogućavajući navigaciju i interakciju sa aplikacijom.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+Kreiran je REST API koji omogućava pristup podacima u JSON formatu. API je posebno koristan za integraciju sa drugim sistemima ili za razvoj mobilnih aplikacija koje koriste podatke iz Pretty Fix aplikacije.
 
-## Learning Laravel
+Implementirani su mehanizmi za registraciju i prijavu korisnika, kao i zaštita ruta putem middleware-a koji zahteva autentikaciju.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+Pretty Fix je kompletna aplikacija koja demonstrira rad i fleksibilnost Laravela i Blade šablona. Kroz različite funkcionalnosti i integracije, ova aplikacija služi kao odličan primer za razvoj modernih web aplikacija.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+___________________________
 
-## Laravel Sponsors
+Pretty Fix is a Laravel application that utilizes Blade templates to create dynamic web pages. The application enables CRUD (Create, Read, Update, Delete) operations for managing posts. Each post includes a title, body text, and a cover photo.
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+To run the application, Laravel must be installed and the environment set up according to Laravel's documentation. After installation, a database should be created and connected to the application via the .env configuration file.
 
-### Premium Partners
+Migrations are used to define the structures of database tables. Seeders are used to populate the database with initial data, facilitating an easier start with the application.
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
+**User Model:** Represents system users. It contains basic information such as name, email, and password.
+**Post Model: **Contains information about posts created by users. Each post is associated with the user who created it.
+The relationship between the User and Post models is 'one-to-many', where one user can create multiple posts.
 
-## Contributing
+**HomeController:** Manages the display of the homepage.
+**PagesController:** Manages static pages such as About and Services.
+**PostsController:** Manages CRUD operations for posts.
+**AuthController:** Manages user registration and login.
+Web routes are defined for each of these functionalities, enabling navigation and interaction with the application.
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+A REST API has been created that allows access to data in JSON format. The API is particularly useful for integration with other systems or for developing mobile applications that use data from the Pretty Fix application.
 
-## Code of Conduct
+Mechanisms for user registration and login have been implemented, along with route protection through middleware requiring authentication.
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Pretty Fix is a complete application that demonstrates the power and flexibility of Laravel and Blade templates. Through its various functionalities and integrations, this application serves as an excellent example for developing modern web applications.
